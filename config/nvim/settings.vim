@@ -1,6 +1,5 @@
 " installation notes:
-" set g:gdrive_path for path dotfile
-" set g:gdrive_path_ for path added to set path+=
+" set g:gdrive_path for path to google drive (for vim wiki)
 
 " hint: gf to go to file, /-->
 
@@ -15,25 +14,10 @@
 "	telescope, startup screen
 "	<cmd>
 
-" https://github.com/elenapan/dotfiles/blob/master/config/nvim/init.vim
-
-
-if !has('nvim')
-	unlet! skip_defaults_vim
-	source $VIMRUNTIME/defaults.vim
-endif
-
-if !exists('g:dotfile_path')
-	let g:dotfile_path=g:gdrive_path . 'dotfiles/'
-endif
-
-exec "set path+=" . g:dotfile_path
-
 if empty(glob('~/tmp'))
 	silent !mkdir ~/tmp
 endif
-set backupdir=~/tmp
-set backup
+
 " set undofile
 
 set number
@@ -57,6 +41,7 @@ set autoread
 " don't wrap search
 set nowrapscan
 
+" don't wrap lines
 set nowrap
 
 " --> Keymaps
@@ -88,17 +73,19 @@ map <Leader>y gg"+yG<C-O><C-O>
 vmap <Leader>y "+y
 
 " buffers
-map <Leader>bn :bn<CR>
-map <Leader>bp :bp<CR>
-map <Leader>bd :bp \| bd #<CR>
-map <Leader>x :bp \| bd #<CR>
+map <leader>bn <cmd>bn<cr>
+map <leader>bp <cmd>bp<cr>
+map <leader>bd <cmd>bp \| bd #<cr>
+map <leader>x <cmd>bp \| bd #<cr>
 
-map <C-b>n :bn<CR>
-map <C-b>p :bp<CR>
-map <C-b>d :bp \| bd #<CR>
+map <c-b>n <cmd>bn<cr>
+map <c-b>p <cmd>bp<cr>
+map <c-b>d <cmd>bp \| bd #<cr>
 
-map <tab> :bn<CR>
-map <S-tab> :bp<CR>
+nmap <tab> <cmd>bn<CR>
+nmap <s-tab> <cmd>bp<CR>
+
+nnoremap <c-p> <tab>
 
 " new undo block at period
 " imap . .u
@@ -129,7 +116,6 @@ command! -nargs=1 HugoNewPost call FHugoNewPost('<args>')
 " vim-fzf
 map <leader><leader><leader> :Commands<CR>
 map <leader><leader>p :Commands<CR>
-map <C-P> :Commands<cr>
 map <Leader><Leader>c :Colors<CR>
 map <Leader><Leader>f :Buffers<CR>
 
