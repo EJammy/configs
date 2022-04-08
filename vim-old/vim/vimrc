@@ -1,0 +1,62 @@
+" installation notes:
+" set g:gdrive_path for path dotfile
+" set g:gdrive_path_ for path added to set path+=
+
+" hint: gf to go to file
+
+if !has('nvim')
+	unlet! skip_defaults_vim
+	source $VIMRUNTIME/defaults.vim
+endif
+
+if !exists('g:dotfile_path')
+	let g:dotfile_path=g:gdrive_path . 'dotfiles/'
+endif
+
+exec "set path+=" . g:dotfile_path
+
+exec "source " . g:dotfile_path . "vim/keymaps.vim"
+exec "source " . g:dotfile_path . "vim/plugins.vim"
+
+exec "source " . g:dotfile_path . "vim/appearance.vim"
+exec "source " . g:dotfile_path . "vim/settings.vim"
+exec "source " . g:dotfile_path . "vim/sessions.vim"
+exec "source " . g:dotfile_path . "vim/cpp.vim"
+exec "source " . g:dotfile_path . "vim/vimwiki.vim"
+
+
+if has('nvim')
+	tmap  
+	tmap fd 
+endif
+
+let g:NERDDefaultAlign='left'
+let g:NERDSpaceDelims=1
+" goyo (focus mode) settings
+let g:goyo_width="80%"
+let g:goyo_height="80%"
+map <Leader>ff :Goyo<CR>
+map <Leader>gg :Goyo<CR>
+
+augroup vimrc
+	autocmd!
+
+	" helps with rclone vfs mounts, otherwise vim throws 'file changed'
+	" warning
+	autocmd BufWritePost * checktime
+	autocmd InsertEnter *
+			\ if bufname() != "[Command line]" | checktime | endif
+	autocmd CursorMoved *
+			\ if bufname() != "[Command line]" | checktime | endif
+	autocmd BufWritePost .vimrc,*.vim,vimrc source ~/.vimrc
+augroup END
+
+" todos:
+"	fix for windows
+"	compiling
+"	set scripts for installing dotfiles
+"	tree (Nerdtree or Fern)
+"	telescope, startup screen
+"	<cmd>
+
+" https://github.com/elenapan/dotfiles/blob/master/config/nvim/init.vim
