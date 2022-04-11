@@ -5,7 +5,6 @@
 
 " TODO:
 " https://github.com/nanotee/nvim-lua-guide
-" lua?
 " TOC?
 "	fix for windows
 "	compiling
@@ -13,40 +12,12 @@
 "	tree (Nerdtree or Fern)
 "	telescope, startup screen
 "	<cmd>
+"
+"	/usr/share/vim/vim82/defaults.vim
 
 if empty(glob('~/tmp'))
 	silent !mkdir ~/tmp
 endif
-
-" set undofile
-
-set number
-set relativenumber
-
-set tabstop=4
-set shiftwidth=0 " use value from tabstop
-set smarttab
-set ignorecase
-" set expandtab
-
-" enable mouse
-set mouse=a
-
-" warp words
-set linebreak
-
-" autoread on file change
-set autoread
-
-" don't wrap search
-set nowrapscan
-
-" don't wrap lines
-set nowrap
-
-" --> Keymaps
-let mapleader=" "
-
 
 map! fd <Esc>
 map! jk <Esc>
@@ -58,7 +29,6 @@ map <leader>s <C-s>
 
 " open vimrc
 command! SettingsLocal vsplit ~/.vimrc
-exec "command! Settings vsplit " . g:dotfile_path . "vim/vimrc"
 command! Preference Settings
 map <Leader>pp :Preference<CR>
 
@@ -78,10 +48,6 @@ map <leader>bp <cmd>bp<cr>
 map <leader>bd <cmd>bp \| bd #<cr>
 map <leader>x <cmd>bp \| bd #<cr>
 
-map <c-b>n <cmd>bn<cr>
-map <c-b>p <cmd>bp<cr>
-map <c-b>d <cmd>bp \| bd #<cr>
-
 nmap <tab> <cmd>bn<CR>
 nmap <s-tab> <cmd>bp<CR>
 
@@ -93,17 +59,12 @@ nnoremap <c-p> <tab>
 nmap gh <plug>(YCMHover)
 
 map <Leader>we <cmd>NvimTreeToggle<CR>
-map <Leader>we :NERDTreeToggle<CR>
+" map <Leader>we :NERDTreeToggle<CR>
 
 " <c-/>
 map  <plug>NERDCommenterToggle
 map <Leader>/ <plug>NERDCommenterToggle
 
-" neovim terminal
-if has('nvim')
-	tmap  
-	tmap fd 
-endif
 
 " blogging with hugo
 function! FHugoNewPost(name)
@@ -176,7 +137,6 @@ call plug#begin('~/.vim/plugged')
 
 " Plug 'vim-airline/vim-airline'
 " Plug 'vim-airline/vim-airline-themes'
-Plug 'scrooloose/nerdtree'
 
 Plug 'feline-nvim/feline.nvim'
 Plug 'vimwiki/vimwiki'
@@ -201,21 +161,23 @@ Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-fugitive'
 
-if has('nvim')
-	Plug 'neovim/nvim-lspconfig'
-	Plug 'nvim-lua/plenary.nvim'
-	Plug 'nvim-telescope/telescope.nvim'
-	Plug 'akinsho/bufferline.nvim'
-	Plug 'neovim/nvim-lspconfig'
-	Plug 'hrsh7th/cmp-nvim-lsp'
-	Plug 'hrsh7th/cmp-buffer'
-	Plug 'hrsh7th/cmp-path'
-	Plug 'hrsh7th/cmp-cmdline'
-	Plug 'hrsh7th/nvim-cmp'
+Plug 'neovim/nvim-lspconfig'
 
-	Plug 'kyazdani42/nvim-web-devicons' " for file icons
-	Plug 'kyazdani42/nvim-tree.lua'
-endif
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+
+Plug 'akinsho/bufferline.nvim'
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+
+" file tree
+Plug 'kyazdani42/nvim-web-devicons' " for file icons
+Plug 'kyazdani42/nvim-tree.lua'
+
 " Plug 'ycm-core/YouCompleteMe'
 " Plug 'neoclide/coc.nvim'
 
