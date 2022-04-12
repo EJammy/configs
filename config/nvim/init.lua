@@ -2,6 +2,7 @@
 
 -- plan: put everythin in one file, then seperate
 
+-- path for syncing vimwiki
 vim.g.gdrive_path='~/Files/'
 
 vim.cmd('source ' .. vim.fn.stdpath('config') .. '/' .. 'settings.vim')
@@ -82,19 +83,22 @@ local packer_bootstrap
 if fn.empty(fn.glob(install_path)) > 0 then
 	packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
 end
+-- TODO:
+-- which-key for nvim-tree
+-- customize plugins
 
 require('packer').startup(function(use)
 	use 'wbthomason/packer.nvim'
 
-use {
-	'kyazdani42/nvim-tree.lua',
-	requires = {
-      'kyazdani42/nvim-web-devicons', -- optional, for file icon
-    },
-	config = function()
-		require'nvim-tree'.setup{}
-	end
-}
+	use {
+		'kyazdani42/nvim-tree.lua',
+		requires = {
+			'kyazdani42/nvim-web-devicons', -- optional, for file icon
+		},
+		config = function()
+			require'nvim-tree'.setup{}
+		end
+	}
 
 	use 'vimwiki/vimwiki'
 	use {
@@ -119,6 +123,9 @@ use {
 	use 'hrsh7th/cmp-path'
 	use 'hrsh7th/cmp-cmdline'
 	use 'hrsh7th/nvim-cmp'
+
+	use 'hrsh7th/cmp-vsnip'
+	use 'hrsh7th/vim-vsnip'
 
 	-- themes
 	use 'NLKNguyen/papercolor-theme'
