@@ -4,7 +4,7 @@
 
 vim.g.gdrive_path='~/Files/'
 
--- vim.cmd('source ' .. vim.fn.stdpath('config') .. '/' .. 'settings.vim')
+vim.cmd('source ' .. vim.fn.stdpath('config') .. '/' .. 'settings.vim')
 
 --> Options
 local options = {
@@ -35,7 +35,6 @@ local options = {
 	scrolloff = 6,
 }
 
-print(options)
 for _, i in pairs(options) do
 	vim.opt[_] = i
 end
@@ -59,7 +58,7 @@ function Toggle_term(termname)
 	local pane = vim.fn.bufwinid(termname)
 	local buf = vim.fn.bufexists(termname)
 	if pane > -1 then
-        -- pane is visible
+		-- pane is visible
 		vim.api.nvim_win_hide(pane)
 	elseif buf > 0 then
 		-- buffer loaded, not visible
@@ -67,7 +66,7 @@ function Toggle_term(termname)
 	else
 		-- create buffer
 		vim.cmd("botright 12split term://zsh")
-        vim.cmd("file " .. termname)
+		vim.cmd("file " .. termname)
 		vim.opt.buflisted = false
 	end
 end
@@ -81,26 +80,88 @@ local fn = vim.fn
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 local packer_bootstrap
 if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+	packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
 end
 
-return require('packer').startup(function(use)
-  -- My plugins here
-  -- use 'foo1/bar1.nvim'
-  -- use 'foo2/bar2.nvim'
+require('packer').startup(function(use)
+	use 'wbthomason/packer.nvim'
 
-  -- Automatically set up your configuration after cloning packer.nvim
-  -- Put this at the end after all plugins
-  if packer_bootstrap then
-    require('packer').sync()
-  end
+use {
+	'kyazdani42/nvim-tree.lua',
+	requires = {
+      'kyazdani42/nvim-web-devicons', -- optional, for file icon
+    },
+	config = function()
+		require'nvim-tree'.setup{}
+	end
+}
+
+	use 'vimwiki/vimwiki'
+	use {
+		'folke/which-key.nvim',
+		config = function()
+			require("which-key").setup{
+			}
+		end
+	}
+	use 'junegunn/goyo.vim'
+
+	-- peek register
+	use 'junegunn/vim-peekaboo'
+
+	use 'tpope/vim-surround'
+
+	use 'scrooloose/nerdcommenter'
+
+	use 'neovim/nvim-lspconfig'
+	use 'hrsh7th/cmp-nvim-lsp'
+	use 'hrsh7th/cmp-buffer'
+	use 'hrsh7th/cmp-path'
+	use 'hrsh7th/cmp-cmdline'
+	use 'hrsh7th/nvim-cmp'
+
+	-- themes
+	use 'NLKNguyen/papercolor-theme'
+	use 'joshdick/onedark.vim'
+	use 'altercation/vim-colors-solarized'
+	use 'ghifarit53/tokyonight-vim'
+	use 'cocopon/iceberg.vim'
+	use 'drewtempelmeyer/palenight.vim'
+
+	--[[
+
+" Plug 'feline-nvim/feline.nvim'
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'plasticboy/vim-markdown'
+Plug 'dpelle/vim-LanguageTool'
+Plug 'junegunn/vim-emoji'
+Plug 'tpope/vim-fugitive'
+Plug 'neovim/nvim-lspconfig'
+
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+
+Plug 'akinsho/bufferline.nvim'
+
+" file tree
+
+" Plug 'ycm-core/YouCompleteMe'
+" Plug 'neoclide/coc.nvim'
+
+	]]
+
+
+	-- Automatically set up your configuration after cloning packer.nvim
+	if packer_bootstrap then
+		require('packer').sync()
+	end
 end)
 
 
-
-
-
--- require'lsp'
+require('lsp')
 
 -- require'nvim-tree'.setup()
 -- require'feline'.setup()

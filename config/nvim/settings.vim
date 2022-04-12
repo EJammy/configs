@@ -19,6 +19,8 @@ if empty(glob('~/tmp'))
 	silent !mkdir ~/tmp
 endif
 
+let mapleader = ' '
+
 map! fd <Esc>
 map! jk <Esc>
 map! kj <Esc>
@@ -124,73 +126,13 @@ endi
 
 
 " Run PlugInstall if there are missing plugins
-autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-			\| PlugInstall --sync | source $MYVIMRC
-			\| endif
-
+" autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+" 			\| PlugInstall --sync | source $MYVIMRC
+" 			\| endif
+ 
 
 set rtp+=/usr/bin/fzf
 map \ <Plug>VimwikiNextLink
-
-" Plugins will be downloaded under the specified directory.
-call plug#begin('~/.vim/plugged')
-
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
-
-Plug 'feline-nvim/feline.nvim'
-Plug 'vimwiki/vimwiki'
-
-Plug 'liuchengxu/vim-which-key'
-
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-
-" focus mode
-Plug 'junegunn/goyo.vim'
-
-Plug 'plasticboy/vim-markdown'
-Plug 'dpelle/vim-LanguageTool'
-
-" peek register
-Plug 'junegunn/vim-peekaboo'
-
-Plug 'junegunn/vim-emoji'
-
-Plug 'tpope/vim-surround'
-Plug 'scrooloose/nerdcommenter'
-Plug 'tpope/vim-fugitive'
-
-Plug 'neovim/nvim-lspconfig'
-
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-
-Plug 'akinsho/bufferline.nvim'
-Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-cmdline'
-Plug 'hrsh7th/nvim-cmp'
-
-" file tree
-Plug 'kyazdani42/nvim-web-devicons' " for file icons
-Plug 'kyazdani42/nvim-tree.lua'
-
-" Plug 'ycm-core/YouCompleteMe'
-" Plug 'neoclide/coc.nvim'
-
-" themes
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'joshdick/onedark.vim'
-Plug 'altercation/vim-colors-solarized'
-Plug 'ghifarit53/tokyonight-vim'
-Plug 'cocopon/iceberg.vim'
-Plug 'drewtempelmeyer/palenight.vim'
-
-call plug#end()
-
 
 " --> Appearance
 
