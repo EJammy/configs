@@ -1,3 +1,8 @@
+-- TODO:
+-- undo dir
+-- which-key for nvim-tree
+-- customize plugins
+--
 -- util = require 'utils'
 
 -- plan: put everythin in one file, then seperate
@@ -83,9 +88,6 @@ local packer_bootstrap
 if fn.empty(fn.glob(install_path)) > 0 then
 	packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
 end
--- TODO:
--- which-key for nvim-tree
--- customize plugins
 
 require('packer').startup(function(use)
 	use 'wbthomason/packer.nvim'
