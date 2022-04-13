@@ -10,9 +10,10 @@ vim.api.nvim_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>
 vim.api.nvim_set_keymap('n', '<space>la', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', {})
 vim.api.nvim_set_keymap('n', '<space>lr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', {})
 vim.api.nvim_set_keymap('n', '<space>ll', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', {})
-vim.api.nvim_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', {})
-vim.api.nvim_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', {})
-vim.api.nvim_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', {})
+vim.api.nvim_set_keymap('n', '<space>lD', '<cmd>lua vim.lsp.buf.type_definition()<CR>', {})
+vim.api.nvim_set_keymap('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<CR>', {})
+vim.api.nvim_set_keymap('n', '<leader>l<F2>', '<cmd>lua vim.lsp.buf.rename()<CR>', {})
+vim.api.nvim_set_keymap('n', '<space>lc', '<cmd>lua vim.lsp.buf.code_action()<CR>', {})
 vim.api.nvim_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', {})
 vim.api.nvim_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', {})
 
