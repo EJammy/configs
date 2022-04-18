@@ -7,6 +7,9 @@ Description=rclone mount
 [Service]
 ExecStart=/usr/bin/rclone mount \
 	--vfs-cache-mode full \
+	--vfs-write-back 5m \
+	--vfs-cache-max-size 5G \
+	--vfs-cache-max-age 24h0m0s \
 	gdrive-home:Files %h/Files
 ExecStop=/bin/fusermount -u %h/File
 Restart=always

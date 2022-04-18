@@ -48,6 +48,8 @@ for _, i in pairs(options) do
 	vim.opt[_] = i
 end
 
+if vim.g.vscode then return end
+
 vim.opt.path:append(vim.fn.stdpath('config'))
 vim.opt.path:append(vim.fn.stdpath('config') .. '/lua')
 
@@ -110,8 +112,7 @@ require('packer').startup(function(use)
 	use {
 		'folke/which-key.nvim',
 		config = function()
-			require("which-key").setup{
-			}
+			require("which-key").setup{}
 		end
 	}
 	use 'junegunn/goyo.vim'
@@ -132,6 +133,10 @@ require('packer').startup(function(use)
 
 	use 'hrsh7th/cmp-vsnip'
 	use 'hrsh7th/vim-vsnip'
+	--
+	-- ray-x/lsp_signature.nvim
+
+	-- use {'neoclide/coc.nvim', branch = 'release'}
 
 	-- themes
 	use 'NLKNguyen/papercolor-theme'
