@@ -41,7 +41,7 @@ cmp.setup({
 		['<C-f>'] = cmp.mapping.scroll_docs(4),
 		['<C-Space>'] = cmp.mapping.complete(),
 		['<C-e>'] = cmp.mapping.abort(),
-		['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+		['<CR>'] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 	}),
 	sources = cmp.config.sources({
 		{ name = 'nvim_lsp' },
@@ -84,6 +84,9 @@ cmp.setup.cmdline(':', {
 -- Setup lspconfig.
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
+local lua_workspace = vim.api.nvim_get_runtime_file("", true)
+table.insert(lua_workspace, vim.fn.getcwd())
+
 local lsp_settings = {
 	sumneko_lua = {
 		Lua = {
@@ -99,7 +102,9 @@ local lsp_settings = {
 			},
 			workspace = {
 				-- Make the server aware of Neovim runtime files
-				library = vim.api.nvim_get_runtime_file("", true),
+				-- library = vim.api.nvim_get_runtime_file("", true)
+				-- library = vim.fn.getcwd(),
+				library = lua_workspace
 			},
 			-- Do not send telemetry data containing a randomized but unique identifier
 			telemetry = {
