@@ -12,6 +12,7 @@ vim.g.gdrive_path='~/Files/'
 
 vim.cmd('source ' .. vim.fn.stdpath('config') .. '/' .. 'settings.vim')
 
+
 --> Options
 local options = {
 	number = true,
@@ -39,6 +40,8 @@ local options = {
 	wrap = false,
 
 	scrolloff = 6,
+
+	completeopt='menu,menuone,noselect',
 }
 
 for _, i in pairs(options) do
@@ -54,7 +57,8 @@ vim.opt.path:append(vim.fn.stdpath('config') .. '/lua')
 local map_key = vim.api.nvim_set_keymap
 map_key('t', '<c-w>', '<c-\\><c-n><c-w>', {})
 map_key('t', 'fd', '<c-\\><c-n>', {})
-
+vim.cmd('au vimrc BufWinEnter,WinEnter term://* startinsert')
+vim.cmd('au vimrc BufWinEnter,WinEnter toggle_term startinsert')
 
 vim.cmd('command! Settings vsplit ' .. vim.fn.stdpath('config'))
 
@@ -136,6 +140,8 @@ require('packer').startup(function(use)
 	use 'ghifarit53/tokyonight-vim'
 	use 'cocopon/iceberg.vim'
 	use 'drewtempelmeyer/palenight.vim'
+
+	-- use 'neoclide/coc.nvim'
 
 	--[[
 

@@ -42,6 +42,7 @@ map <Leader>zf zfa}
 
 " yank to system clipboard
 map <Leader>y gg"+yG<C-O><C-O>
+map <leader>p "+p
 vmap <Leader>y "+y
 
 " buffers
