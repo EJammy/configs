@@ -5,6 +5,8 @@ vim.api.nvim_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', {})
 vim.api.nvim_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', {})
 vim.api.nvim_set_keymap('n', 'gh', '<cmd>lua vim.lsp.buf.implementation()<CR>', {})
 vim.api.nvim_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', {})
+
+vim.api.nvim_set_keymap('i', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', {})
 -- vim.api.nvim_set_keymap('i', '<C-space>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', {})
 
 vim.api.nvim_set_keymap('n', '<space>la', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', {})
