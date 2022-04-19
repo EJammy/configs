@@ -40,6 +40,7 @@ local options = {
 	wrap = false,
 
 	scrolloff = 6,
+	undofile = true,
 
 	completeopt='menu,menuone,noselect',
 }
