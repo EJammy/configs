@@ -96,6 +96,7 @@ augroup vimrc
 
 	" helps with rclone vfs mounts, otherwise vim throws 'file changed'
 	" warning
+	autocmd BufLeave * up
 	autocmd BufWritePost * checktime
 	autocmd InsertEnter *
 			\ if bufname() != "[Command line]" | checktime | endif
