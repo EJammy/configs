@@ -2,6 +2,7 @@ alias wiki='vim -c "VimwikiIndex"'
 alias csafe='g++ -std=c++17 -Wshadow -Wall -DLOCAL -fsanitize=address -fsanitize=undefined -D_GLIBCXX_DEBUG -g'
 alias cfast='g++ -std=c++17 -Wshadow -Wall -DLOCAL -O3'
 
+alias sudo='sudo '
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'

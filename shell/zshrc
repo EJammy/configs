@@ -33,3 +33,4 @@ function yay-install() {
 
 source $(dirname "$0")/alias.sh
 export EDITOR=/usr/bin/vim
+export PATH="${PATH}:/home/connor/.cargo/bin"
