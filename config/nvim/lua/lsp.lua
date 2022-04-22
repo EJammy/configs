@@ -85,9 +85,9 @@ cmp.setup.cmdline(':', {
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local lua_workspace = { vim.fn.getcwd() }
-for _, x in pairs(vim.api.nvim_get_runtime_file("", true)) do
-	table.insert(lua_workspace, x)
-end
+-- for _, x in pairs(vim.api.nvim_get_runtime_file("", true)) do
+--     table.insert(lua_workspace, x)
+-- end
 
 local lsp_settings = {
 	sumneko_lua = {

@@ -49,7 +49,7 @@ for _, i in pairs(options) do
 	vim.opt[_] = i
 end
 
-if vim.g.vscode then return end
+-- if vim.g.vscode then print('foo') end
 
 vim.opt.path:append(vim.fn.stdpath('config'))
 vim.opt.path:append(vim.fn.stdpath('config') .. '/lua')
@@ -99,6 +99,21 @@ end
 require('packer').startup(function(use)
 	use 'wbthomason/packer.nvim'
 
+
+	use 'vimwiki/vimwiki'
+
+	use 'tpope/vim-surround'
+
+	use 'scrooloose/nerdcommenter'
+
+if not vim.g.vscode then
+	use {
+		'folke/which-key.nvim',
+		config = function()
+			require("which-key").setup{}
+		end
+	}
+	
 	use {
 		'kyazdani42/nvim-tree.lua',
 		requires = {
@@ -109,21 +124,11 @@ require('packer').startup(function(use)
 		end
 	}
 
-	use 'vimwiki/vimwiki'
-	use {
-		'folke/which-key.nvim',
-		config = function()
-			require("which-key").setup{}
-		end
-	}
+	--focus mode
 	use 'junegunn/goyo.vim'
 
 	-- peek register
 	use 'junegunn/vim-peekaboo'
-
-	use 'tpope/vim-surround'
-
-	use 'scrooloose/nerdcommenter'
 
 	use 'neovim/nvim-lspconfig'
 	use 'hrsh7th/cmp-nvim-lsp'
@@ -146,6 +151,7 @@ require('packer').startup(function(use)
 	use 'ghifarit53/tokyonight-vim'
 	use 'cocopon/iceberg.vim'
 	use 'drewtempelmeyer/palenight.vim'
+end
 
 	-- use 'neoclide/coc.nvim'
 
@@ -182,7 +188,9 @@ Plug 'akinsho/bufferline.nvim'
 end)
 
 
-require('lsp')
+if not vim.g.vscode then
+	require('lsp')
+end
 
 -- require'nvim-tree'.setup()
 -- require'feline'.setup()

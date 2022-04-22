@@ -57,7 +57,7 @@ nmap <s-tab> <cmd>bp<CR>
 nnoremap <c-p> <tab>
 
 " new undo block at period
-" imap . .u
+" imap . .<c-g>u
 
 nmap gh <plug>(YCMHover)
 
@@ -65,7 +65,7 @@ map <Leader>we <cmd>NvimTreeToggle<CR>
 " map <Leader>we :NERDTreeToggle<CR>
 
 " <c-/>
-map  <plug>NERDCommenterToggle
+map <c-_> <plug>NERDCommenterToggle
 map <Leader>/ <plug>NERDCommenterToggle
 
 
