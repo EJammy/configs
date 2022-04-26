@@ -1,7 +1,6 @@
 -- TODO:
 -- undo dir
--- which-key for nvim-tree
--- customize plugins
+-- which-key for nvim-tree customize plugins
 --
 -- util = require 'utils'
 
@@ -63,7 +62,11 @@ map_key('t', 'fd', '<c-\\><c-n>', {})
 vim.cmd('au vimrc BufWinEnter,WinEnter term://* startinsert')
 vim.cmd('au vimrc BufWinEnter,WinEnter toggle_term startinsert')
 
-vim.cmd('command! Settings vsplit ' .. vim.fn.stdpath('config'))
+vim.cmd('au vimrc BufEnter *.rs RustStartStandaloneServerForBuffer')
+vim.cmd('au vimrc BufEnter *.rs echo "Warning: automatically starting standalone file mode"')
+
+
+vim.cmd('command! Settings vsplit ' .. vim.fn.stdpath('config') .. "/init.lua")
 
 vim.g.leader = ' '
 
@@ -100,20 +103,20 @@ require('packer').startup(function(use)
 	use 'wbthomason/packer.nvim'
 
 
-	use 'vimwiki/vimwiki'
-
 	use 'tpope/vim-surround'
 
 	use 'scrooloose/nerdcommenter'
 
 if not vim.g.vscode then
+	use 'vimwiki/vimwiki'
+
 	use {
 		'folke/which-key.nvim',
 		config = function()
 			require("which-key").setup{}
 		end
 	}
-	
+
 	use {
 		'kyazdani42/nvim-tree.lua',
 		requires = {
@@ -141,6 +144,7 @@ if not vim.g.vscode then
 	use 'hrsh7th/vim-vsnip'
 	--
 	-- ray-x/lsp_signature.nvim
+	use 'simrat39/rust-tools.nvim'
 
 	-- use {'neoclide/coc.nvim', branch = 'release'}
 
@@ -153,7 +157,6 @@ if not vim.g.vscode then
 	use 'drewtempelmeyer/palenight.vim'
 end
 
-	-- use 'neoclide/coc.nvim'
 
 	--[[
 
@@ -190,6 +193,7 @@ end)
 
 if not vim.g.vscode then
 	require('lsp')
+	require('rust-tools').setup({})
 end
 
 -- require'nvim-tree'.setup()

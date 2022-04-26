@@ -89,6 +89,7 @@ local lua_workspace = { vim.fn.getcwd() }
 --     table.insert(lua_workspace, x)
 -- end
 
+-- check :help lspconfig-server-configurations
 local lsp_settings = {
 	sumneko_lua = {
 		Lua = {
@@ -116,6 +117,15 @@ local lsp_settings = {
 	},
 	clangd = {},
 	pyright = {},
+	-- rust_analyzer = {
+	--     ["rust-analyzer"] = {
+	--         server = {
+	--             extraEnv = {
+	--                 RA_LOG = "info"
+	--             }
+	--         }
+	--     }
+	-- },
 }
 
 
