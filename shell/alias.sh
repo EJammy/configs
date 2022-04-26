@@ -6,10 +6,12 @@ alias sudo='sudo '
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+
 autocommit()
 {
-	git status
-	read -p "Commit and push changes? [y/n]: " -n 1 -r
+	git status || return
+	echo -n "Commit and push changes? [y/n]: "
+	read REPLY
 	echo    # (optional) move to a new line
 
 	if [[ $REPLY =~ ^[Yy]$ ]]; then
