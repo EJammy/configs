@@ -62,8 +62,8 @@ map_key('t', 'fd', '<c-\\><c-n>', {})
 vim.cmd('au vimrc BufWinEnter,WinEnter term://* startinsert')
 vim.cmd('au vimrc BufWinEnter,WinEnter toggle_term startinsert')
 
-vim.cmd('au vimrc BufEnter *.rs RustStartStandaloneServerForBuffer')
-vim.cmd('au vimrc BufEnter *.rs echo "Warning: automatically starting standalone file mode"')
+vim.cmd('au vimrc BufWinEnter *.rs RustStartStandaloneServerForBuffer')
+vim.cmd('au vimrc BufWinEnter *.rs echo "Warning: automatically starting standalone file mode"')
 
 
 vim.cmd('command! Settings vsplit ' .. vim.fn.stdpath('config') .. "/init.lua")
